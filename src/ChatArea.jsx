@@ -44,7 +44,6 @@ const ChatArea = ({ userName, room, socket }) => {
   }, [chatMessages]);
   return (
     <>
-      {console.log(chatMessages, "render msg")}
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen  ">
         <ChatHeader userName={userName} />
         <div className="h-full flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
@@ -52,14 +51,13 @@ const ChatArea = ({ userName, room, socket }) => {
             className="flex flex-col justify-end"
             style={{ height: "calc(100vh - 100px)" }}
           >
-            {" "}
             {chatMessages &&
               chatMessages.length > 0 &&
-              chatMessages.map((msg) =>
+              chatMessages.map((msg, index) =>
                 msg.user === userName ? (
-                  <MyMessage message={msg} />
+                  <MyMessage message={msg} key={index} />
                 ) : (
-                  <FriendMessage message={msg} />
+                  <FriendMessage message={msg} key={index} />
                 )
               )}
             <div ref={messagesEndRef} />

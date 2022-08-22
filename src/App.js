@@ -3,34 +3,44 @@ import "./App.css";
 import io from "socket.io-client";
 import ChatArea from "./ChatArea";
 import JoinRoom from "./JoinRoom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 const socket = io("https://carn-app.herokuapp.com");
 // const socket = io("http://localhost:4000");
 
 function App() {
-  const [isRoomJoined, setRoomJoined] = useState(false);
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [room, setRoom] = useState("");
 
   const joinRoom = () => {
     if (userName !== "" && room !== "") {
       socket.emit("join_room", room);
-      setRoomJoined(true);
+      navigate(`chat/room?${room}&username=${userName}`);
     }
   };
 
   return (
     <>
-      {isRoomJoined ? (
-        <ChatArea userName={userName} room={room} socket={socket} />
-      ) : (
-        <JoinRoom
-          setUserName={setUserName}
-          userName={userName}
-          joinRoom={joinRoom}
-          setRoom={setRoom}
-          room={room}
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <JoinRoom
+              setUserName={setUserName}
+              userName={userName}
+              joinRoom={joinRoom}
+              setRoom={setRoom}
+              room={room}
+            />
+          }
         />
-      )}
+        <Route
+          exact
+          path="/chat/:id"
+          element={<ChatArea userName={userName} room={room} socket={socket} />}
+        />
+      </Routes>
     </>
   );
 }
