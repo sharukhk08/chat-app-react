@@ -2,7 +2,7 @@ const JoinRoom = ({ userName, setUserName, joinRoom, setRoom, room }) => {
   return (
     <>
       <div className="flex items-center justify-center h-screen">
-        <div className="max-w-lg mx-auto">
+        <div className="max-w-lg mx-auto p-4">
           <h3 className="my-4 text-3xl font-bold">Join A Chat</h3>
           <input
             onChange={(e) => setUserName(e.target.value)}
@@ -13,6 +13,11 @@ const JoinRoom = ({ userName, setUserName, joinRoom, setRoom, room }) => {
           />
           <input
             onChange={(e) => setRoom(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                joinRoom(userName, room);
+              }
+            }}
             value={room}
             type="text"
             placeholder="Enter Room ID"

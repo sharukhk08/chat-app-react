@@ -3,7 +3,8 @@ import "./App.css";
 import io from "socket.io-client";
 import ChatArea from "./ChatArea";
 import JoinRoom from "./JoinRoom";
-const socket = io("http://localhost:3001");
+const socket = io("https://carn-app.herokuapp.com");
+// const socket = io("http://localhost:4000");
 
 function App() {
   const [isRoomJoined, setRoomJoined] = useState(false);
