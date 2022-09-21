@@ -8,7 +8,7 @@ const JoinRoom = ({ userName, setUserName, joinRoom, setRoom, room }) => {
             onChange={(e) => setUserName(e.target.value)}
             value={userName}
             type="text"
-            placeholder="Hey Sharukh!"
+            placeholder="Hey Muskan!"
             className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 px-4 bg-gray-200 rounded-md py-3"
           />
           <input
