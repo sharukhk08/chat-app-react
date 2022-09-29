@@ -4,6 +4,7 @@ import io from "socket.io-client";
 import ChatArea from "./ChatArea";
 import JoinRoom from "./JoinRoom";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import VideoCallArea from "./VideoCallArea";
 const socket = io("https://carn-app.herokuapp.com");
 // const socket = io("http://localhost:4000");
 
@@ -27,6 +28,19 @@ function App() {
           path="/"
           element={
             <JoinRoom
+              setUserName={setUserName}
+              userName={userName}
+              joinRoom={joinRoom}
+              setRoom={setRoom}
+              room={room}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/video-call"
+          element={
+            <VideoCallArea
               setUserName={setUserName}
               userName={userName}
               joinRoom={joinRoom}

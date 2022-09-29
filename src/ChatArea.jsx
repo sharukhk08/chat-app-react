@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import Peer from "simple-peer";
 import ChatHeader from "./ChatHeader";
 import ChatInput from "./ChatInput";
 import FriendMessage from "./FriendMessage";
@@ -7,7 +8,6 @@ import MyMessage from "./MyMessage";
 const ChatArea = ({ userName, room, socket }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [chatMessages, setChatMessages] = useState([]);
-
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -42,6 +42,7 @@ const ChatArea = ({ userName, room, socket }) => {
   useEffect(() => {
     scrollToBottom();
   }, [chatMessages]);
+
   return (
     <>
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen  ">
