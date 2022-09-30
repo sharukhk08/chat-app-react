@@ -105,7 +105,7 @@ const ChatInput = ({ setCurrentMessage, currentMessage, sendMessage }) => {
             <button
               onClick={() => sendMessage()}
               type="button"
-              className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+              className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-orange-500 hover:bg-blue-400 focus:outline-none"
             >
               <span className="font-bold">Send</span>
               <svg

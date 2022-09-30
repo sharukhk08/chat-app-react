@@ -1,6 +1,9 @@
 import React from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 const ChatHeader = ({ userName }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       {" "}
@@ -26,7 +29,9 @@ const ChatHeader = ({ userName }) => {
           </div>
         </div>
         <div className="flex items-center space-x-2">
+          {/* VIDEO CALL  */}
           <button
+            onClick={() => navigate("/video-call")}
             type="button"
             className="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none"
           >

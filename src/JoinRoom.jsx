@@ -3,7 +3,7 @@ const JoinRoom = ({ userName, setUserName, joinRoom, setRoom, room }) => {
     <>
       <div className="flex items-center justify-center h-screen">
         <div className="max-w-lg mx-auto p-4">
-          <h3 className="my-4 text-3xl font-bold">Join A Chat</h3>
+          <h3 className="my-4 text-3xl font-bold">Join A Chat - With Srk</h3>
           <input
             onChange={(e) => setUserName(e.target.value)}
             value={userName}
@@ -28,7 +28,7 @@ const JoinRoom = ({ userName, setUserName, joinRoom, setRoom, room }) => {
             disabled={!userName || !room}
             onClick={joinRoom}
             type="button"
-            className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+            className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-orange-500 hover:bg-blue-400 focus:outline-none"
           >
             Join Room
           </button>

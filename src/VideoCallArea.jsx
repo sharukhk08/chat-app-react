@@ -3,10 +3,10 @@ import Peer from "simple-peer";
 import io from "socket.io-client";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-// const socket = io("https://carn-app.herokuapp.com");
-const socket = io("http://localhost:4000");
+const socket = io("https://carn-app.herokuapp.com");
+// const socket = io("http://localhost:4000");
 
-const VideoCallArea = ({ userName, setUserName, joinRoom, setRoom, room }) => {
+const VideoCallArea = () => {
   const [me, setMe] = useState("");
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
@@ -100,8 +100,8 @@ const VideoCallArea = ({ userName, setUserName, joinRoom, setRoom, room }) => {
 
   return (
     <>
-      <div className="p:2 sm:p-6 justify-between flex flex-col lg:flex-row h-screen">
-        <div className="w-1/2 bg-black rounded-md h-[400px] mx-4">
+      <div className="lg:p-6 justify-between flex flex-col lg:flex-row h-screen">
+        <div className="w-full lg:w-1/2 bg-black rounded-md h-[400px] lg:mx-4">
           {stream && (
             <video
               playsInline
@@ -120,7 +120,7 @@ const VideoCallArea = ({ userName, setUserName, joinRoom, setRoom, room }) => {
         </div>
 
         {callAccepted && !callEnded ? (
-          <div className="w-1/2 bg-black rounded-md ">
+          <div className="w-full lg:w-1/2 bg-black rounded-md ">
             <video
               playsInline
               muted
@@ -131,7 +131,7 @@ const VideoCallArea = ({ userName, setUserName, joinRoom, setRoom, room }) => {
           </div>
         ) : null}
 
-        <div className="bg-sky-200 p-10 w-1/2 mx-4">
+        <div className="bg-sky-200 p-10 w-full lg:w-1/2 lg:mx-4">
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -143,7 +143,7 @@ const VideoCallArea = ({ userName, setUserName, joinRoom, setRoom, room }) => {
           <CopyToClipboard text={me}>
             <button
               type="button"
-              className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+              className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-orange-500 hover:bg-blue-400 focus:outline-none"
             >
               Copy Id
             </button>
@@ -162,13 +162,13 @@ const VideoCallArea = ({ userName, setUserName, joinRoom, setRoom, room }) => {
               <button
                 onClick={leaveCall}
                 type="button"
-                className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+                className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-orange-500 hover:bg-blue-400 focus:outline-none"
               >
                 Copy Id
               </button>
             ) : (
               <button
-                className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+                className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-orange-500 hover:bg-blue-400 focus:outline-none"
                 onClick={() => callUser(idToCall)}
               >
                 <svg
@@ -193,7 +193,7 @@ const VideoCallArea = ({ userName, setUserName, joinRoom, setRoom, room }) => {
               <div className="caller">
                 <h1>{name} is calling...</h1>
                 <button
-                  className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+                  className="my-4 inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-orange-500 hover:bg-blue-400 focus:outline-none"
                   onClick={answerCall}
                 >
                   Answer
